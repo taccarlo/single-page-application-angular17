@@ -111,7 +111,7 @@
       },
       {
         "id": 11,
-        "city": "roma",
+        "city": "rome",
         "name": "Albergo Roma",
         "services": [
           "bed", "alarm", "car", "briefcase","bed", "bycycle"
@@ -138,7 +138,7 @@
       },
       {
         "id": 12,
-        "city": "roma",
+        "city": "rome",
         "name": "Hotel Termini",
         "services": [
           "alarm", "beer", "car", "heart-empty", "train", "restaurant", "paw", "easel", "cafe"

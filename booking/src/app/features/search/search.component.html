@@ -18,7 +18,12 @@
         <div class="separator"></div>
         <div class="font-big">Hotel in {{ text }}</div>
 
-        <div class="horiz-grid separator" *ngFor="let hotel of hotels">
+        <div
+          class="horiz-grid separator"
+          *ngFor="let hotel of hotels"
+          (click)="setActive(hotel)"
+          [ngClass]="{ active: hotel.id === active?.id }"
+        >
           <div>{{ hotel.name }}</div>
           <div>da € {{ hotel.rooms[0].price }}</div>
         </div>
@@ -40,8 +45,8 @@
           height="200"
         />
         <div class="address">
-          <div class="font-big">Hotel Rockstar</div>
-          <div class="font-small">Milano, Via Marconi 123</div>
+          <div class="font-big">{{ active?.name }}</div>
+          <div class="font-small">{{ active?.location?.address }}</div>
         </div>
       </div>
     </div>
