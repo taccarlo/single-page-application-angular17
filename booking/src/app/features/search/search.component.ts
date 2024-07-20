@@ -15,6 +15,7 @@ export class SearchComponent {
   text = 'milan';
   hotels: Hotel[] = [];
   active?: Hotel;
+  activeImage?: string;
 
   constructor(private http: HttpClient) {
     this.searchHotels(this.text);
@@ -25,10 +26,31 @@ export class SearchComponent {
     const url = 'http://localhost:3000/hotels?city=' + textToFind;
     this.http.get<Hotel[]>(url).subscribe((result) => {
       this.hotels = result;
+      this.setActive(this.hotels[0]);
     });
-    this.active = this.hotels[0];
   }
   setActive(hotel: Hotel) {
     this.active = hotel;
+    this.activeImage = hotel.images[0];
+  }
+  /*
+  sendEmail(contactForm: any) {
+    window.alert(
+      `sent:
+      ${contactForm.value.email},
+      ${contactForm.value.msg},
+      ${this.active?.email}
+      `
+    );
+  }
+    */
+  sendEmail(contactForm: any) {
+    window.alert(
+      `sent:
+      ${contactForm.value.email},
+      ${contactForm.value.msg},
+      ${this.active?.email}
+      `
+    );
   }
 }
