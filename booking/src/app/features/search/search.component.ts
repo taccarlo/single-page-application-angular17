@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Hotel } from '../../model/hotel';
+import { Hotel, Room } from '../../model/hotel';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +18,10 @@ export class SearchComponent {
   active?: Hotel;
   activeImage?: string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private cart:CartService
+  ) {
     this.searchHotels(this.text);
   }
   searchHotels(textToFind: string) {
@@ -33,17 +37,13 @@ export class SearchComponent {
     this.active = hotel;
     this.activeImage = hotel.images[0];
   }
-  /*
-  sendEmail(contactForm: any) {
-    window.alert(
-      `sent:
-      ${contactForm.value.email},
-      ${contactForm.value.msg},
-      ${this.active?.email}
-      `
-    );
+
+  addToCart(room: Room, active?: Hotel){
+    if(active){
+      this.cart.addToCart(active, room);
+    }
   }
-    */
+
   sendEmail(contactForm: any) {
     window.alert(
       `sent:

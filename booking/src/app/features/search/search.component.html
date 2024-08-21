@@ -64,7 +64,8 @@
 
         <br />
 
-        <div class="horiz-grid separator" *ngFor="let room of active?.rooms">
+        <div class="horiz-grid separator" *ngFor="let room of active?.rooms"
+          (click)="addToCart(room, active)">
           <div>{{ room.label }}</div>
           <div>
             {{ room.price }}
